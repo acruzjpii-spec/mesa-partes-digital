@@ -1,0 +1,49 @@
+test_busqueda_encuentra_codigo (test_algoritmos.PruebasAlgoritmos.test_busqueda_encuentra_codigo) ... ok
+test_busqueda_inexistente (test_algoritmos.PruebasAlgoritmos.test_busqueda_inexistente) ... ok
+test_guardado_lectura_csv (test_algoritmos.PruebasAlgoritmos.test_guardado_lectura_csv) ... ok
+test_guardado_sobrescribe_sin_duplicar (test_algoritmos.PruebasAlgoritmos.test_guardado_sobrescribe_sin_duplicar) ... ok
+test_ordenamiento_mantiene_entrada_original (test_algoritmos.PruebasAlgoritmos.test_ordenamiento_mantiene_entrada_original) ... ok
+test_validacion_normaliza_texto (test_algoritmos.PruebasAlgoritmos.test_validacion_normaliza_texto) ... ok
+test_validacion_rechaza_asunto_vacio (test_algoritmos.PruebasAlgoritmos.test_validacion_rechaza_asunto_vacio) ... ok
+test_validacion_rechaza_dni_invalido (test_algoritmos.PruebasAlgoritmos.test_validacion_rechaza_dni_invalido) ... ok
+test_asunto_invalido_no_crea_archivo (test_mesa_consola.PruebasMesaConsola.test_asunto_invalido_no_crea_archivo) ... ok
+test_busqueda_ignora_mayusculas (test_mesa_consola.PruebasMesaConsola.test_busqueda_ignora_mayusculas) ... ok
+test_busqueda_no_encontrado (test_mesa_consola.PruebasMesaConsola.test_busqueda_no_encontrado) ... ok
+test_dni_invalido_no_crea_archivo (test_mesa_consola.PruebasMesaConsola.test_dni_invalido_no_crea_archivo) ... ok
+test_dni_no_persistido_por_minimizacion (test_mesa_consola.PruebasMesaConsola.test_dni_no_persistido_por_minimizacion) ... ok
+test_estado_actualiza_y_se_guarda (test_mesa_consola.PruebasMesaConsola.test_estado_actualiza_y_se_guarda) ... ok
+test_estado_codigo_inexistente (test_mesa_consola.PruebasMesaConsola.test_estado_codigo_inexistente) ... ok
+test_estado_invalido (test_mesa_consola.PruebasMesaConsola.test_estado_invalido) ... ok
+test_generador_no_repite_codigo_hay_huecos (test_mesa_consola.PruebasMesaConsola.test_generador_no_repite_codigo_hay_huecos) ... ok
+test_inicio_sin_archivo (test_mesa_consola.PruebasMesaConsola.test_inicio_sin_archivo) ... ok
+test_listado_ordenado (test_mesa_consola.PruebasMesaConsola.test_listado_ordenado) ... ok
+test_normaliza_cadenas (test_mesa_consola.PruebasMesaConsola.test_normaliza_cadenas) ... ok
+test_persistencia_en_lectura_nueva (test_mesa_consola.PruebasMesaConsola.test_persistencia_en_lectura_nueva) ... ok
+test_registro_crea_archivo_y_codigo (test_mesa_consola.PruebasMesaConsola.test_registro_crea_archivo_y_codigo) ... ok
+test_registro_secuencial (test_mesa_consola.PruebasMesaConsola.test_registro_secuencial) ... ok
+test_01_interfaz_http_200 (test_respaldo_web.PruebasWebRespaldo.test_01_interfaz_http_200) ... ok
+test_02_lista_vacia_al_iniciar (test_respaldo_web.PruebasWebRespaldo.test_02_lista_vacia_al_iniciar) ... ok
+test_03_registrar_y_buscar_codigo (test_respaldo_web.PruebasWebRespaldo.test_03_registrar_y_buscar_codigo) ... ok
+test_04_rechazar_asunto_invalido (test_respaldo_web.PruebasWebRespaldo.test_04_rechazar_asunto_invalido) ... ok
+test_05_busqueda_no_encontrada (test_respaldo_web.PruebasWebRespaldo.test_05_busqueda_no_encontrada) ... ok
+test_06_actualizar_estado_y_persistir (test_respaldo_web.PruebasWebRespaldo.test_06_actualizar_estado_y_persistir) ... ok
+test_07_listado_ordenado (test_respaldo_web.PruebasWebRespaldo.test_07_listado_ordenado) ... ok
+test_08_exportar_csv (test_respaldo_web.PruebasWebRespaldo.test_08_exportar_csv) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 4.065s
+
+OK
+[WEB RESPALDO] "GET / HTTP/1.1" 200 -
+[WEB RESPALDO] "GET /api/respaldo/listar HTTP/1.1" 200 -
+[WEB RESPALDO] "POST /api/respaldo/registrar HTTP/1.1" 201 -
+[WEB RESPALDO] "GET /api/respaldo/buscar?codigo=exp-0001 HTTP/1.1" 200 -
+[WEB RESPALDO] "POST /api/respaldo/registrar HTTP/1.1" 400 -
+[WEB RESPALDO] "GET /api/respaldo/buscar?codigo=EXP-NOEXISTE HTTP/1.1" 404 -
+[WEB RESPALDO] "POST /api/respaldo/registrar HTTP/1.1" 201 -
+[WEB RESPALDO] "POST /api/respaldo/estado HTTP/1.1" 200 -
+[WEB RESPALDO] "POST /api/respaldo/registrar HTTP/1.1" 201 -
+[WEB RESPALDO] "POST /api/respaldo/registrar HTTP/1.1" 201 -
+[WEB RESPALDO] "GET /api/respaldo/listar HTTP/1.1" 200 -
+[WEB RESPALDO] "POST /api/respaldo/registrar HTTP/1.1" 201 -
+[WEB RESPALDO] "GET /api/respaldo/exportar HTTP/1.1" 200 -
