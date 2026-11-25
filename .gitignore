@@ -1,9 +1,13 @@
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
 *.db
+*.sqlite3
 .env
 venv/
 .venv/
+.pytest_cache/
 uploads/*
 !uploads/.gitkeep
+# Datos locales de la demostración en consola
+datos/*.csv
+!datos/.gitkeep
