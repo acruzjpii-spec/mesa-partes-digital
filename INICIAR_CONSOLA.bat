@@ -1,14 +1,25 @@
 @echo off
 setlocal
-chcp 65001 >nul
 cd /d "%~dp0"
-where py >nul 2>&1
-if not errorlevel 1 (
-    py -3 mesa_consola.py --archivo datos\expedientes.csv
-) else (
-    python mesa_consola.py --archivo datos\expedientes.csv
-)
-set "RESULTADO=%ERRORLEVEL%"
-if not "%RESULTADO%"=="0" echo Error de ejecucion. Comprueba que Python 3.10 o superior este instalado.
+set "PYTHONUTF8=1"
+if not exist "mesa_consola.py" goto incompleto
+py -3 -c "import sys; sys.exit(0 if sys.version_info >= (3,10) else 1)" >nul 2>&1
+if not errorlevel 1 goto usar_py
+python -c "import sys; sys.exit(0 if sys.version_info >= (3,10) else 1)" >nul 2>&1
+if not errorlevel 1 goto usar_python
+echo ERROR: Instala Python 3.10 o superior desde python.org y marca Add Python to PATH.
+goto terminar
+:usar_py
+py -3 mesa_consola.py
+goto resultado
+:usar_python
+python mesa_consola.py
+goto resultado
+:incompleto
+echo ERROR: Descomprime TODO el ZIP en una carpeta antes de ejecutar.
+goto terminar
+:resultado
+if errorlevel 1 echo ERROR: Envia una captura del mensaje anterior.
+:terminar
+echo.
 pause
-exit /b %RESULTADO%

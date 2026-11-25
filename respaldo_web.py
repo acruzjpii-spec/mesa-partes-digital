@@ -14,6 +14,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlsplit
 import webbrowser
+from threading import Thread
 from mesa_consola import (
     consultar_expediente, listar_ordenados, registrar_expediente,
     actualizar_estado, obtener_registros,
@@ -116,14 +117,28 @@ def main() -> None:
     parser.add_argument('--puerto', type=int, default=8765)
     parser.add_argument('--archivo', type=Path, default=ARCHIVO)
     args = parser.parse_args()
-    server = construir_servidor(args.puerto,args.archivo)
+    if not HTML.is_file():
+        raise FileNotFoundError("Falta static/respaldo.html. Extrae todo el ZIP antes de abrirlo.")
+    try:
+        server = construir_servidor(args.puerto,args.archivo)
+    except OSError:
+        if args.puerto == 0:
+            raise
+        print("Puerto ocupado o no disponible; buscando otro puerto local...", flush=True)
+        server = construir_servidor(0,args.archivo)
     url = f'http://127.0.0.1:{server.server_port}/'
     print('\nMESA DE PARTES | RESPALDO WEB SIN INTERNET',flush=True)
     print('Abre en el navegador:',url,flush=True)
     print('Los datos se guardan en:',args.archivo,flush=True)
     print('Solo usar nombres ficticios y datos de práctica.',flush=True)
     print('CTRL+C para detener el servidor.\n',flush=True)
-    webbrowser.open(url)
+    def abrir_navegador():
+        try:
+            if not webbrowser.open(url):
+                print("Abre manualmente esta direccion: " + url, flush=True)
+        except Exception as exc:
+            print("No se pudo abrir el navegador: " + str(exc), flush=True)
+    Thread(target=abrir_navegador, daemon=True).start()
     try:
         server.serve_forever(poll_interval=0.1)
     except KeyboardInterrupt:

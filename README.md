@@ -2,6 +2,13 @@
 
 Prototipo académico de Fundamentos de Programación (CIIN1205P). Registra, valida, busca, ordena y almacena expedientes.
 
+## Inicio recomendado para Windows (corrección del 25/11/2026)
+Descomprime TODO el ZIP (no ejecutes archivos desde la ventana del ZIP).
+Haz doble clic en ABRIR_MESA_DE_PARTES.bat: abre la aplicación gráfica de escritorio, con el mismo archivo CSV y las mismas funciones Python del respaldo web. Requiere Python 3.10+ con Tkinter (incluido normalmente en el instalador oficial de Windows). No requiere navegador, conexión ni pip.
+Para usar el navegador, ejecuta INICIAR_WEB_RESPALDO.bat y abre la dirección exacta indicada en la terminal, que puede variar si el puerto 8765 está ocupado. No cierres la terminal. Los lanzadores comprueban la versión de Python y dejan los errores visibles.
+No ejecutes simultáneamente la interfaz de escritorio y el respaldo web sobre el mismo CSV.
+Las 31 pruebas originales pasaron nuevamente. La interfaz gráfica se probó en Linux mediante Tkinter con registro, validación, búsqueda, cambio de estado, listado y exportación. Falta comprobar en la laptop Windows del equipo.
+
 ## Demostración recomendada (Windows)
 1. Descarga el código (Code > Download ZIP) y descomprime. Instala Python 3.10 o superior (3.11 o 3.12 recomendado).
 2. Abre esta carpeta y ejecuta `PROBAR_CODIGO.bat`. Debe mostrar 31 pruebas y OK.
