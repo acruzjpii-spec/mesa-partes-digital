@@ -43,7 +43,7 @@ class MesaApp:
         consulta = ttk.LabelFrame(top, text='2. Buscar y actualizar')
         consulta.grid(row=0, column=1, sticky='nsew', padx=(8, 0))
         for parent in (reg, consulta): parent.columnconfigure(0, weight=1)
-        for i, (label, var) in enumerate((('Asunto', self.asunto), ('Remitente ficticio', self.remitente), ('DNI opcional (8 dígitos)', self.dni))):
+        for i, (label, var) in enumerate((('Asunto', self.asunto), ('Remitente ficticio', self.remitente), ('DNI (8 dígitos)', self.dni))):
             ttk.Label(reg, text=label).grid(row=i*2, column=0, sticky='w')
             ttk.Entry(reg, textvariable=var).grid(row=i*2+1, column=0, sticky='ew', pady=(0, 8))
         ttk.Button(reg, text='Registrar y guardar', command=self.registrar).grid(row=6, column=0, sticky='ew')

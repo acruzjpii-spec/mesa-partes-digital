@@ -93,7 +93,7 @@ def menu(ruta: Path) -> None:
         if opcion == "1":
             asunto = input("Asunto: ")
             remitente = input("Remitente: ")
-            dni = input("DNI (opcional, 8 dígitos): ")
+            dni = input("DNI (8 dígitos): ")
             try:
                 nuevo = registrar_expediente(ruta, asunto, remitente, dni)
                 print("REGISTRO CORRECTO - Código:", nuevo["codigo"])
